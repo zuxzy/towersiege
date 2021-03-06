@@ -10,6 +10,7 @@ var qutik1, qutik2, qutik3, qutik4, qutik5, qutik6, qutik7, qutik8, qutik9, quti
 var qutik11, qutik12, qutik13, qutik14, qutik15, qutik16;
 var gameState = "tension";
 var backgroundImg
+var score = 0;
 
 function preload() {
     getBackgroundImage()
@@ -50,6 +51,10 @@ function draw(){
     if(backgroundImg){
         background(backgroundImg)
     }
+
+    textSize(35);
+    fill("purple");
+    text("Score: "+ score, width - 150, 50);
     Engine.update(engine);
     strokeWeight(4);
 
@@ -102,14 +107,10 @@ async function getBackgroundImage(){
     var datetime = response_json.datetime
     var hour = datetime.slice(11, 13);
     if (hour > 06&&hour < 19){
-        background(255);
         backgroundImg = 255;
-        console.log("bg");
     } else if(hour === 19){
-        background("rgb(255, 192, 81)");
         backgroundImg = "rgb(255, 192, 181)";
     } else {
-        background(0);
-        backgroundImg = 0;
+        backgroundImg = "black";
     }
 }
